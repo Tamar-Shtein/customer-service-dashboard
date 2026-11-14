@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דאשבורד שירות לקוחות</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f4f6fa; margin: 0; padding: 24px; color: #222; }
+  h1 { margin-top: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .card { background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .kpi-value { font-size: 28px; font-weight: bold; }
+  .kpi-label { color: #666; font-size: 14px; }
+  .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .pie { width: 180px; height: 180px; border-radius: 50%; margin: 10px auto; }
+  .legend div { margin: 4px 0; font-size: 14px; }
+  .bar-row { display: flex; align-items: center; margin: 8px 0; font-size: 14px; }
+  .bar-label { width: 110px; }
+  .bar { height: 18px; background: #4a7bd8; border-radius: 4px; }
+  .bar-num { margin-right: 8px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: right; font-size: 14px; }
+  th { background: #eef2f9; }
+  select { padding: 6px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<h1>דאשבורד שירות לקוחות</h1>
+
+<div class="kpis">
+  <div class="card"><div class="kpi-value" id="kpi-total"></div><div class="kpi-label">סך כל הפניות</div></div>
+  <div class="card"><div class="kpi-value" id="kpi-open"></div><div class="kpi-label">פניות פתוחות</div></div>
+  <div class="card"><div class="kpi-value" id="kpi-closed-rate"></div><div class="kpi-label">שיעור פניות שנסגרו</div></div>
+  <div class="card"><div class="kpi-value" id="kpi-top"></div><div class="kpi-label">סוג הפנייה הנפוץ ביותר</div></div>
+</div>
+
+<div class="charts">
+  <div class="card">
+    <h3>התפלגות לפי סטטוס</h3>
+    <div class="pie" id="pie"></div>
+    <div class="legend" id="pie-legend"></div>
+  </div>
+  <div class="card">
+    <h3>פניות לפי סוג</h3>
+    <div id="bars"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>פניות אחרונות</h3>
+  <label>סינון לפי סטטוס:
+    <select id="filter">
+      <option value="all">הכל</option>
+      <option value="פתוחה">פתוחה</option>
+      <option value="בטיפול">בטיפול</option>
+      <option value="נסגרה">נסגרה</option>
+    </select>
+  </label>
+  <table>
+    <thead><tr><th>שם לקוח</th><th>תאריך</th><th>סוג פנייה</th><th>סטטוס טיפול</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<script>
+  // נתוני דמה: 30 פניות
+  const names = ["דנה לוי","יוסי כהן","מיכל אברהם","אורי שמעוני","נועה ברק","תומר גולן","שירה פרץ","עמית רוזן","ליאת בן דוד","רון מזרחי"];
+  const types = ["תמיכה טכנית","חיוב","מידע כללי","תלונה"];
+  const statuses = ["פתוחה","בטיפול","נסגרה"];
+
+  const data = [];
+  for (let i = 0; i < 30; i++) {
+    const day = ((i * 7) % 28) + 1;
+    const month = String(10 - (i % 2)).padStart(2, "0");
+    data.push({
+      name: names[(i * 3) % names.length],
+      date: `2026-${month}-${String(day).padStart(2, "0")}`,
+      type: types[(i * 5) % types.length],
+      status: statuses[(i * 2 + 1) % statuses.length]
+    });
+  }
+  data.sort((a, b) => b.date.localeCompare(a.date));
+
+  // מדדים
+  const total = data.length;
+  const open = data.filter(d => d.status !== "נסגרה").length;
+  const closed = total - open;
+  const closedRate = Math.round((closed / total) * 100);
+
+  const typeCount = {};
+  types.forEach(t => typeCount[t] = 0);
+  data.forEach(d => typeCount[d.type]++);
+  const topType = Object.entries(typeCount).sort((a, b) => b[1] - a[1])[0][0];
+
+  document.getElementById("kpi-total").textContent = total;
+  document.getElementById("kpi-open").textContent = open;
+  document.getElementById("kpi-closed-rate").textContent = closedRate + "%";
+  document.getElementById("kpi-top").textContent = topType;
+
+  // גרף עוגה לפי סטטוס
+  const statusCount = {};
+  statuses.forEach(s => statusCount[s] = data.filter(d => d.status === s).length);
+  const colors = ["#e74c3c", "#f1c40f", "#2ecc71"];
+  let start = 0;
+  const parts = [];
+  const legend = document.getElementById("pie-legend");
+  statuses.forEach((s, i) => {
+    const pct = (statusCount[s] / total) * 100;
+    parts.push(`${colors[i]} ${start}% ${start + pct}%`);
+    start += pct;
+    legend.innerHTML += `<div><span style="display:inline-block;width:12px;height:12px;background:${colors[i]};margin-left:6px"></span>${s}: ${statusCount[s]}</div>`;
+  });
+  document.getElementById("pie").style.background = `conic-gradient(${parts.join(", ")})`;
+
+  // גרף עמודות לפי סוג
+  const maxCount = Math.max(...Object.values(typeCount));
+  const bars = document.getElementById("bars");
+  types.forEach(t => {
+    const width = (typeCount[t] / maxCount) * 220;
+    bars.innerHTML += `<div class="bar-row"><div class="bar-label">${t}</div><div class="bar" style="width:${width}px"></div><span class="bar-num">${typeCount[t]}</span></div>`;
+  });
+
+  // טבלה עם סינון
+  function renderRows(filter) {
+    const rows = document.getElementById("rows");
+    rows.innerHTML = "";
+    data
+      .filter(d => filter === "all" || d.status === filter)
+      .forEach(d => {
+        rows.innerHTML += `<tr><td>${d.name}</td><td>${d.date}</td><td>${d.type}</td><td>${d.status}</td></tr>`;
+      });
+  }
+  renderRows("all");
+  document.getElementById("filter").addEventListener("change", e => renderRows(e.target.value));
+</script>
+
+</body>
+</html>
