@@ -47,7 +47,8 @@ items = payload.get("items", [])
 
 events, rejected = [], []
 for it in items:
-    title = (it.get("title") or "").strip()
+    # Hebcal's Hebrew titles carry nikud (vowel marks); drop them for a cleaner card
+    title = re.sub(r"[\u0591-\u05C7]", "", it.get("title") or "").strip()
     d = (it.get("date") or "")[:10]          # some dates carry a time; keep the day
     if not title or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
         rejected.append({"item": it, "reason": "missing title or bad date"})

@@ -183,12 +183,22 @@
   function renderHolidays(h) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const synced = new Date(h.fetched_at).toLocaleString("he-IL", { dateStyle: "short", timeStyle: "short" });
-    $("holidays-source").innerHTML = `מקור: <b>Hebcal API</b> (ציבורי, ללא טוקן) · ${h.holidays.length} מועדים ב-90 הימים הקרובים · סונכרן ${synced}`;
     const kinds = { major: "חג", minor: "מועד", modern: "יום ציון", fast: "צום" };
-    $("holidays").innerHTML = h.holidays.length ? h.holidays.map(e => {
+    // ימים רצופים של אותו חג (למשל 8 ימי חנוכה) מוצגים ככרטיס אחד
+    const groups = [];
+    h.holidays.forEach(e => {
+      const name = e.title.split(":")[0].trim();
+      const prevDay = new Date(new Date(e.date + "T00:00:00").getTime() - 86400000).toLocaleDateString("en-CA");
+      const g = groups.find(x => x.title === name && (x.end === e.date || x.end === prevDay));
+      if (g) { g.end = e.date; g.day_off = g.day_off || e.day_off; }
+      else groups.push({ ...e, title: name, end: e.date });
+    });
+    $("holidays-source").innerHTML = `מקור: <b>Hebcal API</b> (ציבורי, ללא טוקן) · ${groups.length} מועדים ב-90 הימים הקרובים · סונכרן ${synced}`;
+    $("holidays").innerHTML = groups.length ? groups.map(e => {
       const days = Math.round((new Date(e.date + "T00:00:00") - today) / 86400000);
       const when = days === 0 ? "היום" : days === 1 ? "מחר" : days > 0 ? `בעוד ${days} ימים` : `לפני ${-days} ימים`;
-      const d = new Date(e.date + "T00:00:00").toLocaleDateString("he-IL", { weekday: "short", day: "numeric", month: "numeric" });
+      const fmt = s => new Date(s + "T00:00:00").toLocaleDateString("he-IL", { weekday: "short", day: "numeric", month: "numeric" });
+      const d = e.end === e.date ? fmt(e.date) : `${fmt(e.date)} – ${fmt(e.end)}`;
       return `<div class="holiday${e.day_off ? " off" : ""}">
         <div class="h-title">${e.title}</div>
         <div class="h-date">${d} · ${when}</div>
