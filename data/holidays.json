@@ -1,0 +1,97 @@
+{
+ "source": "Hebcal API",
+ "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-16&end=2027-02-14",
+ "fetched_at": "2026-11-16T08:30:18Z",
+ "range": {
+  "start": "2026-11-16",
+  "end": "2027-02-14"
+ },
+ "items_received": 14,
+ "holidays": [
+  {
+   "date": "2026-11-16",
+   "title": "יוֹם בֶּן־גּוּרִיּוֹן",
+   "kind": "modern",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-04",
+   "title": "חֲנוּכָּה: א׳ נֵר",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-05",
+   "title": "חֲנוּכָּה: ב׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-06",
+   "title": "חֲנוּכָּה: ג׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-07",
+   "title": "חֲנוּכָּה: ד׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-08",
+   "title": "חֲנוּכָּה: ה׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-09",
+   "title": "חֲנוּכָּה: ו׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-10",
+   "title": "חַג הַבָּנוֹת",
+   "kind": "minor",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-10",
+   "title": "חֲנוּכָּה: ז׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-11",
+   "title": "חֲנוּכָּה: ח׳ נֵרוֹת",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-12",
+   "title": "חֲנוּכָּה: יוֹם ח׳",
+   "kind": "major",
+   "day_off": false
+  },
+  {
+   "date": "2026-12-31",
+   "title": "יוֹם הַשָׂפָה הַעִברִית",
+   "kind": "modern",
+   "day_off": false
+  },
+  {
+   "date": "2027-01-23",
+   "title": "ט״וּ בִּשְׁבָט",
+   "kind": "minor",
+   "day_off": false
+  },
+  {
+   "date": "2027-02-07",
+   "title": "יוֹם הַמִּשׁפָּחָה",
+   "kind": "modern",
+   "day_off": false
+  }
+ ],
+ "rejected": []
+}
