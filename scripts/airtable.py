@@ -6,6 +6,7 @@ locally they come from .env, on GitHub from Secrets and Variables.
 """
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -43,7 +44,14 @@ def config():
     missing = [n for n, v in (("AIRTABLE_TOKEN", token), ("AIRTABLE_BASE_ID", base)) if not v]
     if missing:
         sys.exit(f"Missing {', '.join(missing)}. Copy .env.example to .env and fill it in.")
-    return token, base
+    # A base ID is "app" + 14 letters/digits. Pick it out, so a stray space, a
+    # trailing dot or a whole pasted URL still work.
+    m = re.search(r"app[A-Za-z0-9]{14}", base)
+    if not m:
+        sys.exit(f"AIRTABLE_BASE_ID does not look like a base ID (app + 14 characters): {base!r}")
+    if m.group(0) != base:
+        print(f"Note: using base ID {m.group(0)} (cleaned from {base!r})")
+    return token.strip(), m.group(0)
 
 
 def request(method, path, token, body=None, query=None):
