@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
+    inputs:
+      seed:
+        description: "First time only: create the Tickets table and load the 30 tickets"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -20,6 +25,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: First-time setup (create table, load 30 tickets)
+        if: ${{ inputs.seed }}
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          AIRTABLE_BASE_ID: ${{ vars.AIRTABLE_BASE_ID }}
+        run: python scripts/seed_airtable.py
 
       - name: Read tickets from Airtable
         env:

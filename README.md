@@ -34,16 +34,14 @@ index.html  ←  מציג "מקור הנתונים: Airtable · סונכרן ל�
 
 ## הקמה
 1. **Airtable:** יוצרים base, ו[טוקן](https://airtable.com/create/tokens) עם גישה ל-base הזה בלבד.
-2. **טעינה ראשונה של 30 הפניות (פעם אחת, מהמחשב):**
-   ```
-   cp .env.example .env      # ממלאים AIRTABLE_TOKEN ו-AIRTABLE_BASE_ID
-   python scripts/seed_airtable.py
-   ```
-   הסקריפט יוצר את טבלת Tickets ומכניס את הפניות מ-`data/seed_tickets.json`. אפשר להריץ אותו פעמיים בלי ליצור כפילויות.
-3. **GitHub:** ב-Settings → Secrets and variables → Actions:
-   - **Secret** בשם `AIRTABLE_TOKEN`: טוקן נפרד, לקריאה בלבד (`data.records:read`).
+2. **GitHub:** ב-Settings → Secrets and variables → Actions:
+   - **Secret** בשם `AIRTABLE_TOKEN`: הטוקן.
    - **Variable** בשם `AIRTABLE_BASE_ID`: מזהה ה-base (מתחיל ב-`app`).
-4. ב-Actions → **Sync from Airtable** → **Run workflow**. אחרי דקה ייווצר `data/tickets.json` והדאשבורד יציג את הנתונים.
+3. **פעם ראשונה:** Actions → **Sync from Airtable** → **Run workflow**, ומסמנים את התיבה **First time only**. הפעולה יוצרת את טבלת Tickets, מכניסה את 30 הפניות מ-`data/seed_tickets.json` ומסנכרנת. אפשר להריץ אותה פעמיים בלי ליצור כפילויות.
+4. **מכאן והלאה** הסנכרון רץ לבד כל שעה, או ב-**Run workflow** בלי לסמן את התיבה.
+   אחרי הטעינה הראשונה כדאי להחליף את הטוקן ב-Secret בטוקן לקריאה בלבד (`data.records:read`).
+
+אפשר גם להריץ מהמחשב: `cp .env.example .env`, למלא את הערכים, ואז `python scripts/seed_airtable.py` ו-`python scripts/fetch_airtable.py`.
 
 ## קבצים
 - `index.html`: הדאשבורד. טוען את `data/tickets.json`.
