@@ -43,11 +43,24 @@ index.html  ←  מציג "מקור הנתונים: Airtable · סונכרן ל�
 
 אפשר גם להריץ מהמחשב: `cp .env.example .env`, למלא את הערכים, ואז `python scripts/seed_airtable.py` ו-`python scripts/fetch_airtable.py`.
 
+## בונוס: מקור מידע חיצוני - Hebcal API
+הדאשבורד מציג גם **חגים ומועדים ב-90 הימים הקרובים**, כדי לתכנן כוח אדם במוקד: ביום חג המוקד סגור, ולפני חגים יש עומס פניות.
+
+- **ה-API:** [Hebcal](https://www.hebcal.com/home/195/jewish-calendar-rest-api), לוח שנה עברי וחגי ישראל. חינמי וציבורי, **לא צריך טוקן**. נבחר מתוך [public-apis](https://github.com/public-apis/public-apis), בקטגוריית Calendar.
+- **הבקשה:** `GET https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=…&end=…`
+  - `i=on`: לוח החגים של ישראל (יום טוב אחד ולא שניים).
+  - `lg=he`: שמות החגים בעברית.
+  - `maj`, `min`, `mod`: חגים, מועדים וימי ציון.
+- **התשובה:** JSON עם רשימת `items`. לכל פריט יש `title`, `date`, `category`, `subcat`, ו-`yomtov` (האם זה יום חג שבו לא עובדים).
+- **איך זה מתחבר:** `scripts/fetch_holidays.py` קורא את ה-API, משאיר רק חגים (`category = holiday`), בודק בכניסה שיש שם ותאריך תקין, ושומר ב-`data/holidays.json`. ה-workflow `sync-holidays.yml` מריץ אותו **פעם ביום**, כי חגים לא משתנים מהר.
+- **תקלה ב-API לא מפילה את הדאשבורד:** כרטיס החגים נטען בנפרד, ושאר הדאשבורד ממשיך לעבוד.
+
 ## קבצים
 - `index.html`: הדאשבורד. טוען את `data/tickets.json`.
 - `scripts/fetch_airtable.py`: קורא את כל הפניות מ-Airtable ובודק אותן בכניסה.
 - `scripts/seed_airtable.py`: הקמה חד-פעמית של הטבלה והנתונים.
 - `scripts/airtable.py`: חיבור ל-API של Airtable (ספריית Python סטנדרטית בלבד).
-- `.github/workflows/sync-airtable.yml`: הסנכרון האוטומטי.
+- `.github/workflows/sync-airtable.yml`: הסנכרון האוטומטי מ-Airtable (כל שעה).
+- `scripts/fetch_holidays.py` + `.github/workflows/sync-holidays.yml`: בונוס, חגים מ-Hebcal API (פעם ביום).
 - `.env.example`: תבנית למשתני הסביבה. הקובץ האמיתי `.env` לא נשמר ב-Git.
 - `SPEC.md`: אפיון הפרויקט.

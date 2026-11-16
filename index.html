@@ -87,6 +87,14 @@
   .source .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--closed); margin-inline-end: 4px; }
   .source .warn { color: var(--progress); font-weight: 600; }
   .source.error { color: var(--open); border-color: var(--open); }
+  .source-note { color: var(--muted); font-size: 13px; margin: -6px 0 12px; }
+  .holidays { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+  .holiday { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .holiday.off { border-color: var(--open); }
+  .holiday .h-title { font-weight: 700; }
+  .holiday .h-date { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .holiday .h-tag { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--head); }
+  .holiday.off .h-tag { background: var(--open); color: #fff; }
   .empty { text-align: center; color: var(--muted); padding: 24px; }
 </style>
 </head>
@@ -118,6 +126,12 @@
       <h2>מספר פניות לפי סוג</h2>
       <div id="bars"></div>
     </div>
+  </section>
+
+  <section class="card" id="holidays-card" style="margin-bottom:20px">
+    <h2>חגים ומועדים קרובים · תכנון עומסים במוקד</h2>
+    <div class="source-note" id="holidays-source">טוען מ-Hebcal API…</div>
+    <div class="holidays" id="holidays"></div>
   </section>
 
   <section class="card">
@@ -158,6 +172,30 @@
       $("source").textContent = "לא הצלחתי לטעון את הנתונים מ-Airtable (" + err.message + "). " +
         "אם פתחת את הקובץ ישירות מהמחשב, הריצי אותו דרך שרת: python -m http.server";
     });
+
+  // ===== בונוס: מקור מידע חיצוני - Hebcal API (חגים בישראל) =====
+  // GitHub Actions קורא את ה-API פעם ביום (scripts/fetch_holidays.py) ושומר ב-data/holidays.json.
+  fetch("data/holidays.json", { cache: "no-store" })
+    .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(renderHolidays)
+    .catch(err => { $("holidays-source").textContent = "לא הצלחתי לטעון חגים מ-Hebcal (" + err.message + ")."; });
+
+  function renderHolidays(h) {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const synced = new Date(h.fetched_at).toLocaleString("he-IL", { dateStyle: "short", timeStyle: "short" });
+    $("holidays-source").innerHTML = `מקור: <b>Hebcal API</b> (ציבורי, ללא טוקן) · ${h.holidays.length} מועדים ב-90 הימים הקרובים · סונכרן ${synced}`;
+    const kinds = { major: "חג", minor: "מועד", modern: "יום ציון", fast: "צום" };
+    $("holidays").innerHTML = h.holidays.length ? h.holidays.map(e => {
+      const days = Math.round((new Date(e.date + "T00:00:00") - today) / 86400000);
+      const when = days === 0 ? "היום" : days === 1 ? "מחר" : days > 0 ? `בעוד ${days} ימים` : `לפני ${-days} ימים`;
+      const d = new Date(e.date + "T00:00:00").toLocaleDateString("he-IL", { weekday: "short", day: "numeric", month: "numeric" });
+      return `<div class="holiday${e.day_off ? " off" : ""}">
+        <div class="h-title">${e.title}</div>
+        <div class="h-date">${d} · ${when}</div>
+        <span class="h-tag">${e.day_off ? "יום חג · המוקד סגור" : (kinds[e.kind] || "מועד") + " · עומס צפוי"}</span>
+      </div>`;
+    }).join("") : `<div class="empty">אין חגים ב-90 הימים הקרובים</div>`;
+  }
 
   function render(payload) {
   const data = payload.tickets;
