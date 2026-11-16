@@ -1,0 +1,220 @@
+{
+ "source": "Airtable",
+ "table": "Tickets",
+ "fetched_at": "2026-11-16T08:24:22Z",
+ "rows_in_airtable": 30,
+ "rows_shown": 30,
+ "rejected": [],
+ "tickets": [
+  {
+   "id": "rec8USWU4q3prRQDR",
+   "name": "הילה פרידמן",
+   "date": "2026-11-12",
+   "type": "תמיכה טכנית",
+   "status": "פתוחה"
+  },
+  {
+   "id": "recAB8dOl8Q8FVb8X",
+   "name": "גיא נחום",
+   "date": "2026-11-11",
+   "type": "תמיכה טכנית",
+   "status": "בטיפול"
+  },
+  {
+   "id": "rec3smTDrkplhpaMM",
+   "name": "נועה ברק",
+   "date": "2026-11-08",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recGHqHo75vzVtwUO",
+   "name": "הילה פרידמן",
+   "date": "2026-11-08",
+   "type": "תמיכה טכנית",
+   "status": "בטיפול"
+  },
+  {
+   "id": "recP9D1axjK9GKlRM",
+   "name": "אורי שמעוני",
+   "date": "2026-11-08",
+   "type": "תמיכה טכנית",
+   "status": "פתוחה"
+  },
+  {
+   "id": "recw7a9DGirloPzVZ",
+   "name": "שירה פרץ",
+   "date": "2026-11-05",
+   "type": "חיוב",
+   "status": "נסגרה"
+  },
+  {
+   "id": "rec47AQbPJ3AupMHp",
+   "name": "הילה פרידמן",
+   "date": "2026-11-04",
+   "type": "חיוב",
+   "status": "פתוחה"
+  },
+  {
+   "id": "recU5Dcfp1imiqM4E",
+   "name": "רון מזרחי",
+   "date": "2026-11-04",
+   "type": "מידע כללי",
+   "status": "בטיפול"
+  },
+  {
+   "id": "recvOhWwnkAcQJ5JB",
+   "name": "שירה פרץ",
+   "date": "2026-10-30",
+   "type": "מידע כללי",
+   "status": "בטיפול"
+  },
+  {
+   "id": "recMNuZo2qpHpxOgR",
+   "name": "עמית רוזן",
+   "date": "2026-10-28",
+   "type": "מידע כללי",
+   "status": "בטיפול"
+  },
+  {
+   "id": "reccwmWlDJBSX3XqB",
+   "name": "דנה לוי",
+   "date": "2026-10-26",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recwnXDBLnpLtj5yH",
+   "name": "יעל חדד",
+   "date": "2026-10-24",
+   "type": "מידע כללי",
+   "status": "פתוחה"
+  },
+  {
+   "id": "recOrtKxHW8yThWle",
+   "name": "גיא נחום",
+   "date": "2026-10-21",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recaUyyJHpXvrUoEY",
+   "name": "רון מזרחי",
+   "date": "2026-10-19",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recQOpFK84ifrZA2S",
+   "name": "רון מזרחי",
+   "date": "2026-10-18",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "rec4eVmwR6aBE8fzp",
+   "name": "רותם קפלן",
+   "date": "2026-10-17",
+   "type": "תלונה",
+   "status": "נסגרה"
+  },
+  {
+   "id": "rec5sc4uX6vLsoyh6",
+   "name": "גיא נחום",
+   "date": "2026-10-17",
+   "type": "תמיכה טכנית",
+   "status": "בטיפול"
+  },
+  {
+   "id": "recloBFg18P4bGvuN",
+   "name": "תומר גולן",
+   "date": "2026-10-14",
+   "type": "תלונה",
+   "status": "נסגרה"
+  },
+  {
+   "id": "reccFbXKAexdNwd0X",
+   "name": "איתי שגיא",
+   "date": "2026-10-13",
+   "type": "מידע כללי",
+   "status": "בטיפול"
+  },
+  {
+   "id": "rec8P0gV94ruSWEan",
+   "name": "נועה ברק",
+   "date": "2026-10-12",
+   "type": "תמיכה טכנית",
+   "status": "בטיפול"
+  },
+  {
+   "id": "recF8JLM23oSjIJOh",
+   "name": "עמית רוזן",
+   "date": "2026-10-12",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recFxTrmudLjXpamS",
+   "name": "יעל חדד",
+   "date": "2026-10-12",
+   "type": "תמיכה טכנית",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recMCBjDAJWKwRJbr",
+   "name": "מיכל אברהם",
+   "date": "2026-10-11",
+   "type": "תמיכה טכנית",
+   "status": "פתוחה"
+  },
+  {
+   "id": "reclMTYkrrZalKWjV",
+   "name": "יוסי כהן",
+   "date": "2026-10-07",
+   "type": "תלונה",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recnaKzEuBIoM8hZb",
+   "name": "יעל חדד",
+   "date": "2026-10-07",
+   "type": "חיוב",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recjzUlldko5tUpuC",
+   "name": "רון מזרחי",
+   "date": "2026-10-06",
+   "type": "מידע כללי",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recGO20xeX5edUpBv",
+   "name": "נועה ברק",
+   "date": "2026-10-03",
+   "type": "תמיכה טכנית",
+   "status": "פתוחה"
+  },
+  {
+   "id": "recRaYi76w2I9HhPZ",
+   "name": "אורי שמעוני",
+   "date": "2026-10-03",
+   "type": "מידע כללי",
+   "status": "נסגרה"
+  },
+  {
+   "id": "recEpIUmw40fHzgOO",
+   "name": "מיכל אברהם",
+   "date": "2026-10-01",
+   "type": "מידע כללי",
+   "status": "בטיפול"
+  },
+  {
+   "id": "recUpqKegwqwXIJsF",
+   "name": "אורי שמעוני",
+   "date": "2026-10-01",
+   "type": "חיוב",
+   "status": "נסגרה"
+  }
+ ]
+}
