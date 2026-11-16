@@ -1,7 +1,7 @@
 {
  "source": "Hebcal API",
  "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-16&end=2027-02-14",
- "fetched_at": "2026-11-16T08:30:18Z",
+ "fetched_at": "2026-11-16T08:31:14Z",
  "range": {
   "start": "2026-11-16",
   "end": "2027-02-14"
@@ -10,85 +10,85 @@
  "holidays": [
   {
    "date": "2026-11-16",
-   "title": "יוֹם בֶּן־גּוּרִיּוֹן",
+   "title": "יום בןגוריון",
    "kind": "modern",
    "day_off": false
   },
   {
    "date": "2026-12-04",
-   "title": "חֲנוּכָּה: א׳ נֵר",
+   "title": "חנוכה: א׳ נר",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-05",
-   "title": "חֲנוּכָּה: ב׳ נֵרוֹת",
+   "title": "חנוכה: ב׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-06",
-   "title": "חֲנוּכָּה: ג׳ נֵרוֹת",
+   "title": "חנוכה: ג׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-07",
-   "title": "חֲנוּכָּה: ד׳ נֵרוֹת",
+   "title": "חנוכה: ד׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-08",
-   "title": "חֲנוּכָּה: ה׳ נֵרוֹת",
+   "title": "חנוכה: ה׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-09",
-   "title": "חֲנוּכָּה: ו׳ נֵרוֹת",
+   "title": "חנוכה: ו׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-10",
-   "title": "חַג הַבָּנוֹת",
+   "title": "חג הבנות",
    "kind": "minor",
    "day_off": false
   },
   {
    "date": "2026-12-10",
-   "title": "חֲנוּכָּה: ז׳ נֵרוֹת",
+   "title": "חנוכה: ז׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-11",
-   "title": "חֲנוּכָּה: ח׳ נֵרוֹת",
+   "title": "חנוכה: ח׳ נרות",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-12",
-   "title": "חֲנוּכָּה: יוֹם ח׳",
+   "title": "חנוכה: יום ח׳",
    "kind": "major",
    "day_off": false
   },
   {
    "date": "2026-12-31",
-   "title": "יוֹם הַשָׂפָה הַעִברִית",
+   "title": "יום השפה העברית",
    "kind": "modern",
    "day_off": false
   },
   {
    "date": "2027-01-23",
-   "title": "ט״וּ בִּשְׁבָט",
+   "title": "ט״ו בשבט",
    "kind": "minor",
    "day_off": false
   },
   {
    "date": "2027-02-07",
-   "title": "יוֹם הַמִּשׁפָּחָה",
+   "title": "יום המשפחה",
    "kind": "modern",
    "day_off": false
   }
