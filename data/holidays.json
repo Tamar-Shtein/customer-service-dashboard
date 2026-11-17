@@ -1,19 +1,13 @@
 {
  "source": "Hebcal API",
- "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-16&end=2027-02-14",
- "fetched_at": "2026-11-16T08:31:39Z",
+ "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-17&end=2027-02-15",
+ "fetched_at": "2026-11-17T04:36:00Z",
  "range": {
-  "start": "2026-11-16",
-  "end": "2027-02-14"
+  "start": "2026-11-17",
+  "end": "2027-02-15"
  },
- "items_received": 14,
+ "items_received": 13,
  "holidays": [
-  {
-   "date": "2026-11-16",
-   "title": "יום בן־גוריון",
-   "kind": "modern",
-   "day_off": false
-  },
   {
    "date": "2026-12-04",
    "title": "חנוכה: א׳ נר",
