@@ -1,7 +1,7 @@
 {
  "source": "Airtable",
  "table": "Tickets",
- "fetched_at": "2026-11-23T04:26:53Z",
+ "fetched_at": "2026-11-23T06:23:22Z",
  "rows_in_airtable": 30,
  "rows_shown": 30,
  "rejected": [],
