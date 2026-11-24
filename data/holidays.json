@@ -1,12 +1,12 @@
 {
  "source": "Hebcal API",
- "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-23&end=2027-02-21",
- "fetched_at": "2026-11-23T04:49:51Z",
+ "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-24&end=2027-02-22",
+ "fetched_at": "2026-11-24T04:41:43Z",
  "range": {
-  "start": "2026-11-23",
-  "end": "2027-02-21"
+  "start": "2026-11-24",
+  "end": "2027-02-22"
  },
- "items_received": 14,
+ "items_received": 15,
  "holidays": [
   {
    "date": "2026-12-04",
@@ -89,6 +89,12 @@
   {
    "date": "2027-02-21",
    "title": "פורים קטן",
+   "kind": "minor",
+   "day_off": false
+  },
+  {
+   "date": "2027-02-22",
+   "title": "שושן פורים קטן",
    "kind": "minor",
    "day_off": false
   }
