@@ -1,10 +1,10 @@
 {
  "source": "Hebcal API",
- "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-25&end=2027-02-23",
- "fetched_at": "2026-11-25T04:43:19Z",
+ "url": "https://www.hebcal.com/hebcal?v=1&cfg=json&i=on&lg=he&maj=on&min=on&mod=on&start=2026-11-26&end=2027-02-24",
+ "fetched_at": "2026-11-26T04:42:41Z",
  "range": {
-  "start": "2026-11-25",
-  "end": "2027-02-23"
+  "start": "2026-11-26",
+  "end": "2027-02-24"
  },
  "items_received": 15,
  "holidays": [
